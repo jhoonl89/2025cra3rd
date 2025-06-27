@@ -1,0 +1,185 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+	<head>
+        <meta charset="utf-8"/>
+	    <title>car.cpp</title>
+	    <link href="../../third-party/google-code-prettify/prettify-CppCoverage.css" type="text/css" rel="stylesheet" />
+	    <script type="text/javascript" src="../../third-party/google-code-prettify/prettify.js"></script>
+	</head>
+    <body onload="prettyPrint()">
+        <h4></h4>
+        <pre class="prettyprint lang-cpp linenums">
+#include "car.h"
+
+string CarFactory::selectCarType(int answer)
+<span style = "background-color:#dfd">{
+    m_SelectedItem.m_CarType = static_cast&lt;CarType&gt;(answer);</span>
+
+<span style = "background-color:#dfd">    switch (m_SelectedItem.m_CarType)</span>
+    {
+    case SEDAN:
+<span style = "background-color:#dfd">        m_carbody = new SedanCarBody();
+        break;</span>
+    case SUV:
+<span style = "background-color:#dfd">        m_carbody = new SuvCarBody();
+        break;</span>
+    case TRUCK:
+<span style = "background-color:#dfd">        m_carbody = new TruckCarBody();</span>
+        break;
+    default:
+        break;
+    };
+<span style = "background-color:#dfd">    m_carbody-&gt;setType(m_SelectedItem.m_CarType);
+    return m_carbody-&gt;GetMsg();
+}</span>
+
+string CarFactory::selectEngine(int answer)
+<span style = "background-color:#dfd">{
+    m_SelectedItem.m_Engine = static_cast&lt;Engine&gt;(answer);</span>
+
+<span style = "background-color:#dfd">    switch (m_SelectedItem.m_CarType)</span>
+    {
+    case GM:
+<span style = "background-color:#dfd">        m_Engine = new GMEngine();
+        break;</span>
+    case TOYOTA:
+<span style = "background-color:#dfd">        m_Engine = new TOYOTAEngine();
+        break;</span>
+    case WIA:
+<span style = "background-color:#dfd">        m_Engine = new WIAEngine();</span>
+        break;
+    default:
+        break;
+    };
+<span style = "background-color:#dfd">    m_Engine-&gt;setType(m_SelectedItem.m_Engine);
+    return m_Engine-&gt;GetMsg();
+}</span>
+
+string CarFactory::selectBrakeSystem(int answer)
+<span style = "background-color:#dfd">{
+    m_SelectedItem.m_BrakeSystem = static_cast&lt;BrakeSystem&gt;(answer);</span>
+
+<span style = "background-color:#dfd">    switch (m_SelectedItem.m_BrakeSystem)</span>
+    {
+    case GM:
+<span style = "background-color:#dfd">        m_brakeSystem = new MANDOBrake();
+        break;</span>
+    case TOYOTA:
+<span style = "background-color:#dfd">        m_brakeSystem = new CONTINENTALBrake();
+        break;</span>
+    case WIA:
+<span style = "background-color:#dfd">        m_brakeSystem = new BOSCH_BBrake();</span>
+        break;
+    default:
+        break;
+    };
+<span style = "background-color:#dfd">    m_brakeSystem-&gt;setType(m_SelectedItem.m_BrakeSystem);
+    return m_brakeSystem-&gt;GetMsg();
+}</span>
+
+string CarFactory::selectSteeringSystem(int answer)
+<span style = "background-color:#dfd">{
+    m_SelectedItem.m_SteeringSystem = static_cast&lt;SteeringSystem&gt;(answer);</span>
+
+<span style = "background-color:#dfd">    switch (m_SelectedItem.m_SteeringSystem)</span>
+    {
+    case GM:
+<span style = "background-color:#dfd">        m_SteeringSystem = new BOSCH_SSteering();
+        break;</span>
+    case TOYOTA:
+<span style = "background-color:#dfd">        m_SteeringSystem = new MOBISSteering();</span>
+        break;
+        break;
+    default:
+        break;
+    };
+<span style = "background-color:#dfd">    m_SteeringSystem-&gt;setType(m_SelectedItem.m_SteeringSystem);
+    return m_SteeringSystem-&gt;GetMsg();
+}</span>
+
+bool CarFactory::isValidCheck(string* msg)
+<span style = "background-color:#dfd">{
+    bool ret = true;
+    if (m_SelectedItem.m_CarType == SEDAN &amp;&amp; m_SelectedItem.m_BrakeSystem == CONTINENTAL)
+        ret = false;</span>
+
+<span style = "background-color:#dfd">    if (m_SelectedItem.m_CarType == SUV &amp;&amp; m_SelectedItem.m_Engine == TOYOTA)
+        ret = false;</span>
+
+<span style = "background-color:#dfd">    if (m_SelectedItem.m_CarType == TRUCK &amp;&amp; m_SelectedItem.m_Engine == WIA)
+        ret = false;</span>
+
+<span style = "background-color:#dfd">    if (m_SelectedItem.m_CarType == TRUCK &amp;&amp; m_SelectedItem.m_BrakeSystem == MANDO)
+        ret = false;</span>
+
+<span style = "background-color:#dfd">    if (m_SelectedItem.m_BrakeSystem == BOSCH_B &amp;&amp; m_SelectedItem.m_SteeringSystem != BOSCH_S)
+        ret = false;</span>
+
+<span style = "background-color:#dfd">    if (m_SelectedItem.m_Engine == DAMAGED)
+        ret = false;</span>
+    
+<span style = "background-color:#dfd">    *msg = (ret == false) ? ("ÀÚµ¿Â÷°¡ µ¿ÀÛµÇÁö ¾Ê½À´Ï´Ù\n") : ("ÀÚµ¿Â÷°¡ µ¿ÀÛµË´Ï´Ù.\n");</span>
+
+<span style = "background-color:#dfd">    return ret;
+}</span>
+
+bool CarFactory::runProducedCar(string* msg)
+<span style = "background-color:#dfd">{
+    if (false == isValidCheck(msg))
+        return false;</span>
+
+<span style = "background-color:#dfd">    return true;
+}</span>
+
+bool CarFactory::testProducedCar(string* result, string* reason)
+<span style = "background-color:#dfd">{
+    bool ret = true;
+    *result = "ÀÚµ¿Â÷ ºÎÇ° Á¶ÇÕ Å×½ºÆ® °á°ú : FAIL\n";
+    if (m_carbody-&gt;getType() == SEDAN &amp;&amp; m_brakeSystem-&gt;getType() == CONTINENTAL)</span>
+    {
+<span style = "background-color:#dfd">        *reason = "Sedan¿¡´Â ContinentalÁ¦µ¿ÀåÄ¡ »ç¿ë ºÒ°¡\n";
+        ret = false;
+    }
+    else if (m_carbody-&gt;getType() == SUV &amp;&amp; m_Engine-&gt;getType() == TOYOTA)</span>
+    {
+<span style = "background-color:#dfd">        *reason = "SUV¿¡´Â TOYOTA¿£Áø »ç¿ë ºÒ°¡\n";
+        ret = false;
+    }
+    else if (m_carbody-&gt;getType() == TRUCK &amp;&amp; m_Engine-&gt;getType() == WIA)</span>
+    {
+<span style = "background-color:#dfd">        *reason = "Truck¿¡´Â WIA¿£Áø »ç¿ë ºÒ°¡\n";
+        ret = false;
+    }
+    else if (m_carbody-&gt;getType() == TRUCK &amp;&amp; m_brakeSystem-&gt;getType() == MANDO)</span>
+    {
+<span style = "background-color:#dfd">        *reason = "Truck¿¡´Â MandoÁ¦µ¿ÀåÄ¡ »ç¿ë ºÒ°¡\n";
+        ret = false;
+    }
+    else if (m_brakeSystem-&gt;getType() == BOSCH_B &amp;&amp; m_SteeringSystem-&gt;getType() != BOSCH_S)</span>
+    {
+<span style = "background-color:#dfd">        *reason = "BoschÁ¦µ¿ÀåÄ¡¿¡´Â BoschÁ¶ÇâÀåÄ¡ ÀÌ¿Ü »ç¿ë ºÒ°¡\n";
+        ret = false;
+    }</span>
+    else
+    {
+<span style = "background-color:#dfd">        *result = "ÀÚµ¿Â÷ ºÎÇ° Á¶ÇÕ Å×½ºÆ® °á°ú : PASS\n";</span>
+    }
+
+<span style = "background-color:#dfd">    return ret;
+}</span>
+</pre>
+        <hr />
+        <table width="100%">
+            <thead>
+                <tr>
+                    <th align="center">
+                        <small>Generated by</small>
+                        <a href="https://github.com/OpenCppCoverage/OpenCppCoverage/releases">
+                            <strong>OpenCppCoverage (Version: 0.9.9.0)</strong>
+                        </a>
+                    </th>
+                </tr>
+            </thead>
+        </table>
+    </body>
+</html>
