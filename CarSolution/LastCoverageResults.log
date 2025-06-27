@@ -1,0 +1,18 @@
+[2025-06-27 09:35:25] [info] Start Program:
+Path:".\\x64\\Debug\\Project1.exe"
+Arguments:
+Working directory: not set.
+Modules: Selected: * Excluded: 
+Sources: Selected: C:*.cpp Excluded: 
+Log Level: Normal
+Cover Children: 0
+Aggregate by file: 1
+Continue after C++ exception: 0
+Optimized build support: 0
+Export: html coverage 
+Input coverage: 
+Unified diff: 
+Excluded line regular expressions: 
+Substitute pdb source paths: 
+[2025-06-27 09:35:25] [error] Error: HandleInformation.cpp:134 OpenCppCoverage cannot find the name of the module.
+See https://github.com/OpenCppCoverage/OpenCppCoverage/wiki/FAQ#error-opencppcoverage-cannot-find-the-name-of-the-module for more information.

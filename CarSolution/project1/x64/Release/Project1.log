@@ -1,0 +1,10 @@
+﻿  cal.cpp
+  cal_test.cpp
+  main.cpp
+  gtest-all.cc
+  gmock-all.cc
+  코드를 생성하고 있습니다.
+  Previous IPDB not found, fall back to full compilation.
+  All 2477 functions were compiled because no usable IPDB/IOBJ from previous compilation was found.
+  코드를 생성했습니다.
+  Project1.vcxproj -> C:\Users\User\source\repos\2025cra3rd\CarSolution\x64\Release\mission1.exe
