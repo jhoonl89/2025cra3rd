@@ -26,8 +26,17 @@ using namespace std;
 	ret1 = carfactory.runProducedCar(&amp;msg);
 	ret2 = carfactory.testProducedCar(&amp;msg, &amp;reason);</span>
 
-<span style = "background-color:#dfd">	EXPECT_EQ(ret1, true);
+<span style = "background-color:#dfd">	int CarType = carfactory.getSelectedCarType(&amp;msg);
+	int Engine = carfactory.getSelectedEngine(&amp;msg);
+	int BrakeSystem = carfactory.getSelectedBrakeSystem(&amp;msg);
+	int SteeringSystem = carfactory.getSelectedSteeringSystem(&amp;msg);
+	EXPECT_EQ(ret1, true);
 	EXPECT_EQ(ret2, true);</span>
+
+<span style = "background-color:#dfd">	EXPECT_EQ(CarType, SEDAN);
+	EXPECT_EQ(Engine, GM);
+	EXPECT_EQ(BrakeSystem, MANDO);
+	EXPECT_EQ(SteeringSystem, BOSCH_S);</span>
 
 <span style = "background-color:#dfd">	carfactory.selectCarType(SUV);
 	carfactory.selectEngine(GM);
@@ -140,8 +149,9 @@ using namespace std;
 	ret2 = carfactory.testProducedCar(&amp;msg, &amp;reason);</span>
 
 <span style = "background-color:#dfd">	EXPECT_EQ(ret1, false);
-	EXPECT_EQ(ret2, false);
-}</span></pre>
+	EXPECT_EQ(ret2, false);</span>
+
+<span style = "background-color:#dfd">}</span></pre>
         <hr />
         <table width="100%">
             <thead>

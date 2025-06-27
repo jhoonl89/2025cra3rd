@@ -166,6 +166,11 @@ public:
     string selectBrakeSystem(int answer);
     string selectSteeringSystem(int answer);
 
+    int getSelectedCarType(string* msg);
+    int getSelectedEngine(string* msg);
+    int getSelectedBrakeSystem(string* msg);
+    int getSelectedSteeringSystem(string* msg);
+
     bool isValidCheck(string* msg);
 
     bool runProducedCar(string* msg);

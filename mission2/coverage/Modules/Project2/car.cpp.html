@@ -97,6 +97,26 @@ string CarFactory::selectSteeringSystem(int answer)
     return m_SteeringSystem-&gt;GetMsg();
 }</span>
 
+int CarFactory::getSelectedCarType(string* msg)
+<span style = "background-color:#dfd">{
+    return static_cast&lt;int&gt;(m_SelectedItem.m_CarType);
+}</span>
+
+int CarFactory::getSelectedEngine(string* msg)
+<span style = "background-color:#dfd">{
+    return static_cast&lt;int&gt;(m_SelectedItem.m_Engine);
+}</span>
+
+int CarFactory::getSelectedBrakeSystem(string* msg)
+<span style = "background-color:#dfd">{
+    return static_cast&lt;int&gt;(m_SelectedItem.m_BrakeSystem);
+}</span>
+
+int CarFactory::getSelectedSteeringSystem(string* msg)
+<span style = "background-color:#dfd">{
+    return static_cast&lt;int&gt;(m_SelectedItem.m_SteeringSystem);
+}</span>
+
 bool CarFactory::isValidCheck(string* msg)
 <span style = "background-color:#dfd">{
     bool ret = true;

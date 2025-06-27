@@ -15,8 +15,17 @@ TEST(Group, TC1) {
 	ret1 = carfactory.runProducedCar(&msg);
 	ret2 = carfactory.testProducedCar(&msg, &reason);
 
+	int CarType = carfactory.getSelectedCarType(&msg);
+	int Engine = carfactory.getSelectedEngine(&msg);
+	int BrakeSystem = carfactory.getSelectedBrakeSystem(&msg);
+	int SteeringSystem = carfactory.getSelectedSteeringSystem(&msg);
 	EXPECT_EQ(ret1, true);
 	EXPECT_EQ(ret2, true);
+
+	EXPECT_EQ(CarType, SEDAN);
+	EXPECT_EQ(Engine, GM);
+	EXPECT_EQ(BrakeSystem, MANDO);
+	EXPECT_EQ(SteeringSystem, BOSCH_S);
 
 	carfactory.selectCarType(SUV);
 	carfactory.selectEngine(GM);
@@ -130,4 +139,5 @@ TEST(Group, TC1) {
 
 	EXPECT_EQ(ret1, false);
 	EXPECT_EQ(ret2, false);
+
 }
