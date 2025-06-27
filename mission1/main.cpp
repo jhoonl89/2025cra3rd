@@ -216,7 +216,6 @@ int inputParam(char* pBuf)
     }
 
     return answer;
-    return answer;
 }
 
 bool checkAnswerValidity(int step, int answer)
